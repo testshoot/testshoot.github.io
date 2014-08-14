@@ -4,7 +4,6 @@
 var MIH = MIH || {},
     $ = jQuery || {},
     win = window || {};
-
 MIH.FEDTest = {
 
   query: '',
