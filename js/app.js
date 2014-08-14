@@ -1,3 +1,6 @@
+
+    //search: "https://api.github.com/search/repositories?q="
+
 var MIH = MIH || {},
     $ = jQuery || {},
     win = window || {};
@@ -25,8 +28,7 @@ MIH.FEDTest = {
   },
 
   DATA: {
-	search: "https://api.github.com/legacy/repos/search/"
-    //search: "https://api.github.com/search/repositories?q="
+    search: 'https://api.github.com/legacy/repos/search/'
   },
 
   cache: (function(ss) {
@@ -39,9 +41,10 @@ MIH.FEDTest = {
       get: function(k) { return JSON.parse(ss.getItem(k)); }
     };			
   })(win.sessionStorage),
+
   timer: {
     id: 0,
-    count: 100,
+    count: 1000,
     start: function(cb, context) {
       var timer = this;
       console.info('Timer started', timer.count);
@@ -56,21 +59,30 @@ MIH.FEDTest = {
     reset: function() {
       if (this.id) {
         win.clearInterval(this.id);
-        this.count = 100;
+        this.count = 1000;
         this.id = 0;
       }
     }
   },
 
   getGitHubResults: function(event) {
+    console.info('Event called:', 'getGitHubResults');
+
     if ('keyup' === event.type && 13 !== event.which) {
-      return false;			
+      /* Exit if not Enter/Return key press */ return false;			
     }
+
     var query = this.DOM.$input.val() || this.defaults.query,
         data = this.cache.get(query);
+
     if (data) {
+      
+      // get results from cache
       this.renderResults(data);
+
     } else if (!this.DOS()) {
+
+      console.info('New search!');
       this.timer.start(function() {
         $.getJSON(
           this.DATA.search + this.query,
@@ -79,6 +91,9 @@ MIH.FEDTest = {
       }, this);
 
     } else {
+
+      console.info('else conditional');
+      // Please wait message
 
     }
 
