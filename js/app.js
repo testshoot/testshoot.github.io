@@ -25,7 +25,7 @@ MIH.FEDTest = {
   },
 
   DATA: {
-    search: 'https://api.github.com/search/repositories?q='
+    search: 'https://api.github.com/legacy/repos/search/'
   },
 
   cache: (function(ss) {
