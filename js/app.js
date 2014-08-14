@@ -139,11 +139,7 @@ MIH.FEDTest = {
     return false;
   },
 
- 
-
-    $details.empty().html($tmpl).show();
-    return $details;
-  },
+  
 
 };
 
