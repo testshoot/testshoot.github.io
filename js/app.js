@@ -138,9 +138,4 @@ MIH.FEDTest = {
     event.preventDefault();
     return false;
   },
-
-  
-
-};
-
-$(function() { MIH.FEDTest.init(); });
+}
