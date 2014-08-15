@@ -138,4 +138,54 @@ MIH.FEDTest = {
     event.preventDefault();
     return false;
   },
-}
+
+  renderDetails: function(data) {
+    var dt, prop, dom = this.DOM,
+        $tmpl = $(dom.$tmplDetail),
+        $details = dom.$details.empty();
+
+    for (prop in data) {
+      if ('url' === prop) {
+        data[prop] = '<a href="'+ encodeURI(data[prop]) +'" target="gh">Go to Repo</a>';
+      } else if ('pushed' === prop && (dt = new Date(data[prop]))) {
+        data[prop] = dt.toLocaleDateString() +' @ '+ dt.toLocaleTimeString();
+      }
+      $tmpl.find('.'+prop).html(data[prop]);
+    }
+
+    $details.empty().html($tmpl).show();
+    return $details;
+  },
+
+  closeOverlay: function(event) {
+    return $(event.target).is('a')? event : this.DOM.$details.hide();
+  },
+
+  bindEvents: function() {
+    var e, arr;
+    for (e in this.events) {
+      arr = e.split(/^(\w+)\s/);
+      if (!arr.shift() && arr.length === 2) {
+        this.$el.on( arr[0], arr[1], this[this.events[e]].bind(this) );
+      }
+    }
+  },
+
+  events: {
+    'click #results-container li': 'getGitHubDetails',
+    'click #overlay-container': 'closeOverlay',
+    'click #search-submit': 'getGitHubResults',
+    'keyup #search': 'getGitHubResults'
+  },
+
+  init: function() {
+    this.cache.set('queries', ['Joe']);
+    this.defaults = { query: [''] };
+    this.$el = $("#ghSearch");
+    this.DOM = this.DOM();
+    this.bindEvents();
+  }
+
+};
+
+$(function() { MIH.FEDTest.init(); });
