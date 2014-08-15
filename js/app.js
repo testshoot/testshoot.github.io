@@ -119,11 +119,7 @@ MIH.FEDTest = {
       var $docfrag = $(tmpl);
       $docfrag.data('details', v);
       $docfrag.find('.name').html(v.name);
-      $docfrag.find('.language').html(v.language);	  
       $docfrag.find('.owner').html(v.owner);
-	  $docfrag.find('.created').html(v.created);
-      $docfrag.find('.pushed').html(v.pushed);
-      $docfrag.find('.description').html(v.description);	  
       $results.append($docfrag);
     });
 
