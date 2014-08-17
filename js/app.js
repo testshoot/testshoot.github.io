@@ -1,9 +1,8 @@
 
-    //search: "https://api.github.com/search/repositories?q="
-
 var MIH = MIH || {},
     $ = jQuery || {},
     win = window || {};
+
 MIH.FEDTest = {
 
   query: '',
@@ -122,7 +121,7 @@ MIH.FEDTest = {
       $docfrag.find('.owner').html(v.owner);
       $docfrag.find('.language').html(v.language);
       $docfrag.find('.created').html(v.created);
-      $docfrag.find('.pushed').html(v.pushed);	  	  
+      $docfrag.find('.pushed').html(v.pushed);      
       $results.append($docfrag);
     });
 
