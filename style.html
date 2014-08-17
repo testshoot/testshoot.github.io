@@ -3,26 +3,35 @@
 <head>
 <meta charset="utf-8">
 <title>Untitled Document</title>
+  <link rel="stylesheet" href="css/normalize.css"/>
+  <link rel="stylesheet" href="css/styles.css"/>
 <style>
-.repo {}
-.repo div {}
-.repo span {border:1px solid red;width:20px;height:20px}
-
+ul, li {}
+.repo {
+width:480px}
+.repo div {
+	float:left;
+	position:relative;
+	width:49%
+}
+.repo span {
+	border: 1px solid red;
+	width: 20px;
+	height: 20px
+}
+.repo h2 {font-size:18px;float:left;width:49%}
 </style>
 </head>
 
 <body>
 <ul>
-
-		<li class="repo">
-			<span class="name"></span>
-			<span class="owner"></span>
-  			<span class="language"></span>
-			<span class="created"></span>
-			<span class="pushed"></span>
-		</li>
-
-
+  <li class="repo">
+    <h2><span class="name"></span></h2>
+    <div class="owner">Owner: <span class="owner"></span></div>
+    <div class="language">Lang: <span class="language"></span></div>
+    <div class="created">Created: <span class="created"></span></div>
+    <div class="pushed">Pushed: <span class="pushed"></span></div>
+  </li>
 </ul>
 </body>
 </html>

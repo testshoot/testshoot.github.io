@@ -50,43 +50,32 @@ ul li.repo span {
 	opacity: 0.8;
 }
 
-.repo .owner:before {
-	content: "(Owner: "
+.repo .owner {
 }
 
-.repo .owner:after {
-	content: ")"
+.repo .name {
 }
 
-.repo .name:before {
-	content: "Repo: "
+.repo .url {
+
 }
 
-.repo .url:before {
-	content: "URL: "
+.repo .pushed {
+
 }
 
-.repo .pushed:before {
-	content: "Updated: "
+.repo .description {
+
 }
 
-.repo .description:before {
-	content: "Description: "
+.repo .followers {
+
 }
 
-.repo .followers:before {
-	content: "Followers: "
+.repo .language {
 }
 
-.repo .language:before {
-	content: "Language: "
-}
-
-#search-submit { /* I'm using a data-uri backbround image for the right arrow indicator in the search field. While slightly larger (~2.5K) than the equivalent PNG (~1.8K), I've employed this technique merely for demonstration. */
-	/* background-image: url(data:image/png;base64,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); */
-	top: 13%; right: 16%;
-	position: absolute;
-	outline: none;
+#search-submit { 
 }
 
 #results-container {
